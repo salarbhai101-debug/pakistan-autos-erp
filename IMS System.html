@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pakistan Autos & Tire Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0d0d1a;--sidebar:#080812;--surface:#13132a;--surface2:#1c1c38;--border:#ffffff0f;--border2:#ffffff18;--accent:#f0a500;--accent-dim:#f0a50022;--accent-border:#f0a50044;--green:#22c55e;--green-dim:#22c55e18;--red:#ef4444;--red-dim:#ef444418;--blue:#3b82f6;--blue-dim:#3b82f618;--text:#f1f1f1;--text2:#9999bb;--radius:10px;--radius-lg:14px;--shadow:0 4px 24px #00000044;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:"Inter",sans-serif;display:flex;height:100vh;overflow:hidden;font-size:14px;}
+.sidebar{width:240px;min-width:240px;background:var(--sidebar);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto;}
+.logo-wrap{padding:18px 16px 14px;border-bottom:1px solid var(--border);}
+.logo-icon{width:40px;height:40px;background:var(--accent);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:8px;}
+.logo-name{font-size:13px;font-weight:800;color:var(--accent);}
+.logo-sub{font-size:10px;color:var(--text2);margin-top:2px;}
+.nav-sec{padding:10px 8px 2px;}
+.nav-sec-label{font-size:10px;font-weight:700;color:var(--text2);letter-spacing:1px;text-transform:uppercase;padding:0 8px;margin-bottom:4px;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;cursor:pointer;color:var(--text2);font-size:13px;font-weight:500;transition:all .15s;margin-bottom:1px;}
+.nav-item:hover{background:var(--surface);color:var(--text);}
+.nav-item.active{background:var(--accent-dim);color:var(--accent);border:1px solid var(--accent-border);}
+.nav-icon{font-size:15px;width:20px;text-align:center;}
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;}
+.topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.topbar-title{font-size:17px;font-weight:700;}
+.topbar-sub{font-size:11px;color:var(--text2);margin-top:2px;}
+.page{flex:1;overflow-y:auto;padding:20px 24px;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px;margin-bottom:16px;}
+.card-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.card-title{font-size:12px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin-bottom:18px;}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;}
+.stat-label{font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px;}
+.stat-val{font-size:22px;font-weight:800;margin-bottom:3px;}
+.stat-sub{font-size:11px;color:var(--text2);}
+.table-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+thead tr{background:var(--surface2);}
+th{padding:10px 12px;text-align:left;font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.4px;white-space:nowrap;}
+td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tbody tr:hover td{background:var(--surface2);}
+.fg{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;}
+.fgg{margin-bottom:12px;}
+.fl{font-size:11px;font-weight:600;color:var(--text2);margin-bottom:5px;display:block;}
+input,select,textarea{background:var(--surface2);border:1px solid var(--border2);border-radius:7px;padding:9px 12px;color:var(--text);font-size:13px;font-family:"Inter",sans-serif;width:100%;outline:none;transition:border-color .2s;}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);}
+input::placeholder,textarea::placeholder{color:var(--text2);}
+select option{background:var(--surface2);}
+.btn{border:none;border-radius:7px;padding:8px 16px;font-weight:600;font-size:13px;cursor:pointer;font-family:"Inter",sans-serif;transition:all .15s;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;}
+.btn-p{background:linear-gradient(135deg,var(--accent),#c87010);color:#000;}
+.btn-s{background:var(--surface2);color:var(--text);border:1px solid var(--border2);}
+.btn-s:hover{border-color:var(--accent);color:var(--accent);}
+.btn-d{background:var(--red-dim);color:var(--red);border:1px solid #ef444430;}
+.btn-ok{background:var(--green-dim);color:var(--green);border:1px solid #22c55e30;}
+.btn-i{background:var(--blue-dim);color:var(--blue);border:1px solid #3b82f630;}
+.btn-sm{padding:5px 11px;font-size:12px;}
+.btn-blk{width:100%;justify-content:center;padding:12px;}
+.badge{padding:2px 9px;border-radius:20px;font-size:11px;font-weight:700;}
+.bg{background:var(--green-dim);color:var(--green);}
+.br{background:var(--red-dim);color:var(--red);}
+.by{background:var(--accent-dim);color:var(--accent);}
+.bb{background:var(--blue-dim);color:var(--blue);}
+.bgr{background:#ffffff10;color:var(--text2);}
+.overlay{position:fixed;inset:0;background:#000000bb;z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;}
+.modal{background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius-lg);width:100%;max-width:580px;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow);}
+.modal-hd{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.modal-title{font-size:15px;font-weight:700;}
+.modal-body{padding:20px;}
+.modal-ft{padding:12px 20px;border-top:1px solid var(--border);display:flex;gap:10px;justify-content:flex-end;}
+.mclose{background:none;border:none;color:var(--text2);font-size:20px;cursor:pointer;}
+.mclose:hover{color:var(--text);}
+.receipt-wrap{background:#fff;color:#000;border-radius:10px;}
+.ri{padding:18px 16px 10px;font-family:"Courier New",monospace;}
+.rs{text-align:center;font-size:14px;font-weight:900;letter-spacing:1px;margin-bottom:2px;}
+.rsb{text-align:center;font-size:10px;color:#666;}
+.rd{border-top:1px dashed #aaa;margin:7px 0;}
+.rr{display:flex;justify-content:space-between;font-size:12px;margin:3px 0;}
+.rin{font-weight:700;font-size:12px;margin-top:5px;}
+.rtot{font-size:14px;font-weight:900;}
+.rf{text-align:center;font-size:10px;color:#888;margin-top:10px;}
+.notif{position:fixed;top:18px;right:18px;z-index:9999;background:var(--green);color:#fff;padding:12px 18px;border-radius:9px;font-weight:600;font-size:13px;box-shadow:var(--shadow);animation:slin .3s ease;max-width:300px;}
+.notif.err{background:var(--red);}
+@keyframes slin{from{opacity:0;transform:translateX(30px);}to{opacity:1;transform:translateX(0);}}
+.empty{text-align:center;padding:40px 20px;color:var(--text2);}
+.empty .ei{font-size:40px;margin-bottom:10px;}
+.loading{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9000;gap:14px;}
+.spinner{width:34px;height:34px;border:3px solid var(--accent-dim);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.flex{display:flex;}.gap2{gap:8px;}.gap3{gap:12px;}.aic{align-items:center;}.jsb{justify-content:space-between;}.fwrap{flex-wrap:wrap;}
+.mt2{margin-top:8px;}.mt3{margin-top:12px;}.mb3{margin-bottom:12px;}.mb4{margin-bottom:16px;}
+.ta{color:var(--accent);}.tg{color:var(--green);}.tr{color:var(--red);}.tm{color:var(--text2);}
+.fb{font-weight:700;}.fs{font-weight:600;}.txs{font-size:11px;}.tsl{font-size:12px;}.tlg{font-size:16px;}.txl{font-size:20px;}
+.divider{border-top:1px solid var(--border);margin:14px 0;}
+.sb{position:relative;margin-bottom:12px;}
+.sb input{padding-left:34px;}
+.si{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--text2);}
+</style>
+</head>
+<body>
+ 
+<div class="loading" id="loading">
+  <div class="spinner"></div>
+  <div style="color:var(--accent);font-weight:600">Pakistan Autos ERP...</div>
+</div>
+ 
+<div class="sidebar">
+  <div class="logo-wrap">
+    <div class="logo-icon">&#128663;</div>
+    <div class="logo-name">PAKISTAN AUTOS</div>
+    <div class="logo-sub">&amp; Tire Agency &mdash; ERP v2</div>
+  </div>
+  <div class="nav-sec">
+    <div class="nav-sec-label">Main</div>
+    <div class="nav-item active" id="n-dashboard" onclick="nav('dashboard')"><span class="nav-icon">&#127968;</span>Dashboard</div>
+  </div>
+  <div class="nav-sec">
+    <div class="nav-sec-label">Inventory</div>
+    <div class="nav-item" id="n-stock" onclick="nav('stock')"><span class="nav-icon">&#128230;</span>Stock Items</div>
+    <div class="nav-item" id="n-po" onclick="nav('po')"><span class="nav-icon">&#128717;</span>Purchase Orders</div>
+    <div class="nav-item" id="n-so" onclick="nav('so')"><span class="nav-icon">&#128176;</span>Sales Orders</div>
+  </div>
+  <div class="nav-sec">
+    <div class="nav-sec-label">Master</div>
+    <div class="nav-item" id="n-customers" onclick="nav('customers')"><span class="nav-icon">&#128100;</span>Customers</div>
+    <div class="nav-item" id="n-suppliers" onclick="nav('suppliers')"><span class="nav-icon">&#127981;</span>Suppliers</div>
+    <div class="nav-item" id="n-categories" onclick="nav('categories')"><span class="nav-icon">&#127991;</span>Stock Categories</div>
+    <div class="nav-item" id="n-taxes" onclick="nav('taxes')"><span class="nav-icon">&#128202;</span>Manage Taxes</div>
+  </div>
+  <div class="nav-sec">
+    <div class="nav-sec-label">Reports</div>
+    <div class="nav-item" id="n-r-daily" onclick="nav('r-daily')"><span class="nav-icon">&#128197;</span>Daily Activity</div>
+    <div class="nav-item" id="n-r-sales" onclick="nav('r-sales')"><span class="nav-icon">&#128200;</span>Sales Report</div>
+    <div class="nav-item" id="n-r-purchase" onclick="nav('r-purchase')"><span class="nav-icon">&#128201;</span>Purchase Report</div>
+    <div class="nav-item" id="n-r-so-out" onclick="nav('r-so-out')"><span class="nav-icon">&#9203;</span>Sales Outstanding</div>
+    <div class="nav-item" id="n-r-po-out" onclick="nav('r-po-out')"><span class="nav-icon">&#9200;</span>Purchase Outstanding</div>
+    <div class="nav-item" id="n-r-low" onclick="nav('r-low')"><span class="nav-icon">&#9888;</span>Low Stock Items</div>
+    <div class="nav-item" id="n-r-pod" onclick="nav('r-pod')"><span class="nav-icon">&#128203;</span>PO Details</div>
+  </div>
+</div>
+ 
+<div class="main">
+  <div class="topbar">
+    <div>
+      <div class="topbar-title" id="tb-title">Dashboard</div>
+      <div class="topbar-sub" id="tb-sub">Pakistan Autos &amp; Tire Agency</div>
+    </div>
+    <div id="tb-date" style="font-size:12px;color:var(--text2)"></div>
+  </div>
+  <div class="page" id="page"></div>
+</div>
+ 
+<div class="overlay" id="modal" style="display:none">
+  <div class="modal" id="modal-box">
+    <div class="modal-hd">
+      <div class="modal-title" id="modal-title"></div>
+      <button class="mclose" onclick="closeModal()">&#10005;</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-ft" id="modal-ft"></div>
+  </div>
+</div>
+ 
+<div class="overlay" id="rcpt-modal" style="display:none">
+  <div class="modal" style="max-width:350px">
+    <div class="receipt-wrap"><div class="ri" id="rcpt-content"></div></div>
+    <div class="modal-ft">
+      <button class="btn btn-p" onclick="doPrint()">&#128424; Print</button>
+      <button class="btn btn-s" onclick="closeRcpt()">&#10005; Close</button>
+    </div>
+  </div>
+</div>
+ 
+<div class="notif" id="notif" style="display:none"></div>
+ 
+<script>
+var DB={stock:[],customers:[],suppliers:[],categories:[],taxes:[],po:[],so:[]};
+var poItems=[],soItems=[];
+var currentPage='dashboard';
+ 
+// STORAGE
+function loadAll(){
+  var keys=["stock","customers","suppliers","categories","taxes","po","so"];
+  for(var i=0;i<keys.length;i++){
+    try{var r=localStorage.getItem("pata_"+keys[i]);if(r)DB[keys[i]]=JSON.parse(r);}catch(e){DB[keys[i]]=[];}
+  }
+}
+function save(k){try{localStorage.setItem("pata_"+k,JSON.stringify(DB[k]));}catch(e){}}
+ 
+// UTILS
+var ntimer;
+function notif(msg,err){
+  var el=document.getElementById("notif");
+  el.textContent=msg;el.className="notif"+(err?" err":"");el.style.display="block";
+  clearTimeout(ntimer);ntimer=setTimeout(function(){el.style.display="none";},3000);
+}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7);}
+function fd(d){return d?new Date(d).toLocaleDateString("en-PK"):"-";}
+function fm(n){return"Rs. "+(n||0).toLocaleString();}
+function td(){return new Date().toISOString().slice(0,10);}
+function inv(p){var n=new Date();return p+"-"+n.getFullYear()+("0"+(n.getMonth()+1)).slice(-2)+("0"+n.getDate()).slice(-2)+"-"+("0"+n.getHours()).slice(-2)+("0"+n.getMinutes()).slice(-2)+("0"+n.getSeconds()).slice(-2);}
+function sc(h){document.getElementById("page").innerHTML=h;}
+function openModal(t,b,f){document.getElementById("modal-title").textContent=t;document.getElementById("modal-body").innerHTML=b;document.getElementById("modal-ft").innerHTML=f||"";document.getElementById("modal").style.display="flex";}
+function closeModal(){document.getElementById("modal").style.display="none";}
+function closeRcpt(){document.getElementById("rcpt-modal").style.display="none";}
+function gv(id){var el=document.getElementById(id);return el?el.value:"";}
+function gf(id){return parseFloat(gv(id))||0;}
+function gi(id){return parseInt(gv(id))||0;}
+
+// XSS Protection
+function esc(s){if(!s)return "";return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
+
+// NAV
+var TITLES={dashboard:"Dashboard",stock:"Stock Items",po:"Purchase Orders",so:"Sales Orders",customers:"Customers",suppliers:"Suppliers",categories:"Stock Categories",taxes:"Manage Taxes","r-daily":"Daily Activity Report","r-sales":"Sales Report","r-purchase":"Purchase Report","r-so-out":"Sales Outstanding","r-po-out":"Purchase Outstanding","r-low":"Low Stock Items","r-pod":"PO Details"};
+function nav(p){
+  currentPage=p;
+  document.querySelectorAll(".nav-item").forEach(function(e){e.classList.remove("active");});
+  var el=document.getElementById("n-"+p);if(el)el.classList.add("active");
+  document.getElementById("tb-title").textContent=TITLES[p]||p;
+  document.getElementById("tb-sub").textContent="Pakistan Autos & Tire Agency › "+(TITLES[p]||p);
+  var map={dashboard:pgDashboard,stock:pgStock,po:pgPO,so:pgSO,customers:pgCustomers,suppliers:pgSuppliers,categories:pgCategories,taxes:pgTaxes,"r-daily":pgRDaily,"r-sales":pgRSales,"r-purchase":pgRPurchase,"r-so-out":pgRSOOut,"r-po-out":pgRPOOut,"r-low":pgRLow,"r-pod":pgRPOD};
+  if(map[p])map[p]();else sc("<div class=\"empty\"><div class=\"ei\">&#128679;</div>Coming soon</div>");
+}
+ 
+// DASHBOARD
+function pgDashboard(){
+  var ts=DB.stock.length,ls=DB.stock.filter(function(s){return s.qty<=(s.minQty||5);}).length;
+  var tsales=DB.so.reduce(function(a,o){return a+o.total;},0);
+  var tpur=DB.po.reduce(function(a,o){return a+o.total;},0);
+  var tsday=DB.so.filter(function(o){return o.date===td();}).reduce(function(a,o){return a+o.total;},0);
+  var tpaid=DB.so.reduce(function(a,o){return a+(o.paid||0);},0);
+  var pend=DB.so.filter(function(o){return o.status!=="paid";}).length;
+  var rec=[].concat(DB.so).sort(function(a,b){return b.id>a.id?1:-1;}).slice(0,5);
+  var lows=DB.stock.filter(function(s){return s.qty<=(s.minQty||5);}).slice(0,6);
+  sc(
+    '<div class="stat-grid">'+
+    '<div class="stat-card"><div class="stat-label">&#128230; Stock Items</div><div class="stat-val ta">'+ts+'</div><div class="stat-sub">'+ls+' low stock</div></div>'+
+    '<div class="stat-card"><div class="stat-label">&#128176; Total Sales</div><div class="stat-val tg">'+fm(tsales)+'</div><div class="stat-sub">All time</div></div>'+
+    '<div class="stat-card"><div class="stat-label">&#128197; Today Sales</div><div class="stat-val ta">'+fm(tsday)+'</div><div class="stat-sub">'+td()+'</div></div>'+
+    '<div class="stat-card"><div class="stat-label">&#128717; Purchases</div><div class="stat-val" style="color:var(--blue)">'+fm(tpur)+'</div><div class="stat-sub">All time</div></div>'+
+    '<div class="stat-card"><div class="stat-label">&#9203; Outstanding</div><div class="stat-val tr">'+pend+'</div><div class="stat-sub">Unpaid orders</div></div>'+
+    '<div class="stat-card"><div class="stat-label">&#9888; Low Stock</div><div class="stat-val tr">'+ls+'</div><div class="stat-sub">Need reorder</div></div>'+
+    '</div>'+
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">'+
+    '<div class="card"><div class="card-hd"><div class="card-title">Recent Sales</div><button class="btn btn-s btn-sm" onclick="nav(\'so\')">View All</button></div>'+
+    (rec.length===0?'<div class="empty" style="padding:20px"><div class="ei">&#128203;</div>No sales yet</div>':
+    '<div class="table-wrap"><table><thead><tr><th>Invoice</th><th>Customer</th><th>Total</th><th>Status</th></tr></thead><tbody>'+
+    rec.map(function(o){return'<tr><td class="ta fb">'+esc(o.inv)+'</td><td>'+esc(o.cname)+'</td><td>'+fm(o.total)+'</td><td><span class="badge '+(o.status==="paid"?"bg":o.status==="partial"?"by":"br")+'">'+o.status+'</span></td></tr>';}).join("")+
+    '</tbody></table></div>')+'</div>'+
+    '<div class="card"><div class="card-hd"><div class="card-title">&#9888; Low Stock Alert</div><button class="btn btn-s btn-sm" onclick="nav(\'r-low\')">Report</button></div>'+
+    (lows.length===0?'<div class="empty" style="padding:20px"><div class="ei">&#10003;</div>All OK</div>':
+    '<div class="table-wrap"><table><thead><tr><th>Item</th><th>Qty</th><th>Min</th></tr></thead><tbody>'+
+    lows.map(function(s){return'<tr><td class="fb">'+esc(s.name)+'</td><td><span class="badge br">'+s.qty+'</span></td><td class="tm">'+(s.minQty||5)+'</td></tr>';}).join("")+
+    '</tbody></table></div>')+'</div></div>'
+  );
+}
+ 
+// STOCK
+function pgStock(){
+  var qEl=document.getElementById("sq");
+  var q=qEl?qEl.value:"";
+  var cursorPos=qEl?qEl.selectionStart:0;
+  
+  var items=DB.stock.filter(function(s){return !q||s.name.toLowerCase().includes(q.toLowerCase())||(s.sku||"").toLowerCase().includes(q.toLowerCase());});
+  sc(
+    '<div class="card"><div class="card-hd"><div class="card-title">&#128230; Stock Items ('+DB.stock.length+')</div><button class="btn btn-p" onclick="stockForm()">+ Add Item</button></div>'+
+    '<div class="sb"><span class="si">&#128269;</span><input id="sq" placeholder="Search name or SKU..." value="'+esc(q)+'" oninput="pgStock()"/></div>'+
+    (items.length===0?'<div class="empty"><div class="ei">&#128230;</div>No items. Add above!</div>':
+    '<div class="table-wrap"><table><thead><tr><th>#</th><th>SKU</th><th>Name</th><th>Category</th><th>Sale Price</th><th>Purchase</th><th>Stock</th><th>Min</th><th>Actions</th></tr></thead><tbody>'+
+    items.map(function(s,i){
+      var b=s.qty===0?"bgr":s.qty<=(s.minQty||5)?"br":"bg";
+      var cat=DB.categories.find(function(c){return c.id===s.categoryId;});
+      return'<tr>'+
+        '<td class="tm">'+(i+1)+'</td>'+
+        '<td class="ta fs">'+esc(s.sku||"-")+'</td>'+
+        '<td class="fb">'+esc(s.name)+'</td>'+
+        '<td>'+(cat?'<span class="badge bb">'+esc(cat.name)+'</span>':"&#8212;")+'</td>'+
+        '<td>'+fm(s.salePrice)+'</td>'+
+        '<td class="tm">'+fm(s.purchasePrice)+'</td>'+
+        '<td><span class="badge '+b+'">'+s.qty+' '+esc(s.unit||"pcs")+'</span></td>'+
+        '<td class="tm">'+(s.minQty||5)+'</td>'+
+        '<td class="flex gap2"><button class="btn btn-i btn-sm" onclick="stockForm(\''+s.id+'\')">&#9999;</button>'+
+        '<button class="btn btn-d btn-sm" onclick="delStock(\''+s.id+'\')">&#128465;</button></td>'+
+        '</tr>';
+    }).join("")+
+    '</tbody></table></div>')+'</div>'
+  );
+  var newQ=document.getElementById("sq");
+  if(newQ){newQ.focus();newQ.setSelectionRange(cursorPos,cursorPos);}
+}
+ 
+function stockForm(id){
+  var s=id?DB.stock.find(function(x){return x.id===id;}):{};
+  var co=DB.categories.map(function(c){return'<option value="'+c.id+'" '+(s.categoryId===c.id?"selected":"")+'>'+esc(c.name)+'</option>';}).join("");
+  var to=DB.taxes.map(function(t){return'<option value="'+t.id+'" '+(s.taxId===t.id?"selected":"")+'>'+esc(t.name)+' ('+t.rate+'%)</option>';}).join("");
+  openModal(id?"Edit Stock Item":"Add Stock Item",
+    '<div class="fg">'+
+    '<div class="fgg"><label class="fl">Name *</label><input id="sn" value="'+esc(s.name||"")+'"/></div>'+
+    '<div class="fgg"><label class="fl">SKU / Code</label><input id="ssku" value="'+esc(s.sku||"")+'"/></div>'+
+    '<div class="fgg"><label class="fl">Category</label><select id="scat"><option value="">-- None --</option>'+co+'</select></div>'+
+    '<div class="fgg"><label class="fl">Tax</label><select id="stax"><option value="">-- None --</option>'+to+'</select></div>'+
+    '<div class="fgg"><label class="fl">Sale Price (Rs.) *</label><input type="number" id="ssp" value="'+(s.salePrice||"")+'"/></div>'+
+    '<div class="fgg"><label class="fl">Purchase Price (Rs.)</label><input type="number" id="spp" value="'+(s.purchasePrice||"")+'"/></div>'+
+    '<div class="fgg"><label class="fl">Stock Qty *</label><input type="number" id="sqty" value="'+(s.qty||0)+'"/></div>'+
+    '<div class="fgg"><label class="fl">Min Stock</label><input type="number" id="smin" value="'+(s.minQty||5)+'"/></div>'+
+    '<div class="fgg"><label class="fl">Unit</label><input id="sunit" value="'+esc(s.unit||"pcs")+'"/></div>'+
+    '<div class="fgg"><label class="fl">Location/Rack</label><input id="sloc" value="'+esc(s.location||"")+'"/></div>'+
+    '</div>',
+    '<button class="btn btn-p" onclick="saveStock(\''+(id||"")+'\')">&#128190; Save</button><button class="btn btn-s" onclick="closeModal()">Cancel</button>'
+  );
+}
+ 
+function saveStock(id){
+  var name=gv("sn").trim(),sp=gf("ssp"),qty=gi("sqty");
+  if(!name||!sp){notif("Name and Sale Price required!",1);return;}
+  var item={id:id||uid(),name:name,sku:gv("ssku"),categoryId:gv("scat"),taxId:gv("stax"),salePrice:sp,purchasePrice:gf("spp"),qty:qty,minQty:gi("smin")||5,unit:gv("sunit")||"pcs",location:gv("sloc")};
+  if(id)DB.stock=DB.stock.map(function(x){return x.id===id?item:x;});
+  else DB.stock.push(item);
+  save("stock");closeModal();pgStock();notif("Stock item saved!");
+}
+function delStock(id){if(!confirm("Delete?"))return;DB.stock=DB.stock.filter(function(x){return x.id!==id;});save("stock");pgStock();notif("Deleted!",1);}
+ 
+// PURCHASE ORDERS
+function pgPO(){
+  var orders=[].concat(DB.po).sort(function(a,b){return b.id>a.id?1:-1;});
+  sc(
+    '<div class="card"><div class="card-hd"><div class="card-title">&#128717; Purchase Orders ('+DB.po.length+')</div><button class="btn btn-p" onclick="poForm()">+ New PO</button></div>'+
+    (orders.length===0?'<div class="empty"><div class="ei">&#128717;</div>No POs yet</div>':
+    '<div class="table-wrap"><table><thead><tr><th>PO No.</th><th>Supplier</th><th>Date</th><th>Due</th><th>Items</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead><tbody>'+
+    orders.map(function(o){return'<tr>'+
+      '<td class="ta fb">'+esc(o.inv)+'</td><td>'+esc(o.sname)+'</td>'+
+      '<td>'+fd(o.date)+'</td><td class="'+(o.dueDate&&o.dueDate<td()?"tr":"tm")+'">'+fd(o.dueDate)+'</td>'+
+      '<td class="tm">'+o.items.length+'</td><td class="fb">'+fm(o.total)+'</td>'+
+      '<td><span class="badge '+(o.status==="received"?"bg":o.status==="partial"?"by":"br")+'">'+o.status+'</span></td>'+
+      '<td class="flex gap2"><button class="btn btn-i btn-sm" onclick="viewPO(\''+o.id+'\')">&#128065;</button>'+
+      '<button class="btn btn-ok btn-sm" onclick="receivePO(\''+o.id+'\')">&#10003;</button>'+
+      '<button class="btn btn-d btn-sm" onclick="delPO(\''+o.id+'\')">&#128465;</button></td>'+
+      '</tr>';}).join("")+
+    '</tbody></table></div>')+'</div>'
+  );
+}
+ 
+function poForm(){
+  poItems=[];
+  var so=DB.suppliers.map(function(s){return'<option value="'+s.id+'" data-name="'+esc(s.name)+'">'+esc(s.name)+'</option>';}).join("");
+  var sto=DB.stock.map(function(s){return'<option value="'+s.id+'" data-price="'+s.purchasePrice+'" data-name="'+esc(s.name)+'">'+esc(s.name)+(s.sku?" ("+esc(s.sku)+")":"")+'</option>';}).join("");
+  openModal("New Purchase Order",
+    '<div class="fg">'+
+    '<div class="fgg"><label class="fl">Supplier *</label><select id="posup"><option value="">-- Select --</option>'+so+'</select></div>'+
+    '<div class="fgg"><label class="fl">Date *</label><input type="date" id="podate" value="'+td()+'"/></div>'+
+    '<div class="fgg"><label class="fl">Due Date</label><input type="date" id="podue"/></div>'+
+    '<div class="fgg"><label class="fl">Notes</label><input id="ponotes"/></div>'+
+    '</div><div class="divider"></div>'+
+    '<div class="card-title mb3">Add Items</div>'+
+    '<div class="flex gap2 mb3 fwrap">'+
+    '<select id="poisel" style="flex:1;min-width:180px"><option value="">-- Select Item --</option>'+sto+'</select>'+
+    '<input type="number" id="poiqty" placeholder="Qty" style="width:70px" value="1"/>'+
+    '<input type="number" id="poiprice" placeholder="Price" style="width:90px"/>'+
+    '<button class="btn btn-ok" onclick="addPOItem()">+ Add</button>'+
+    '</div><div id="poilist"></div>'+
+    '<div class="flex jsb aic mt3"><div class="fb">Total: <span id="pototal" class="ta">Rs. 0</span></div></div>',
+    '<button class="btn btn-p" onclick="savePO()">&#128190; Save PO</button><button class="btn btn-s" onclick="closeModal()">Cancel</button>'
+  );
+  renderPOItems();
+}
+ 
+function addPOItem(){
+  var sel=document.getElementById("poisel"),opt=sel.options[sel.selectedIndex];
+  if(!opt.value){notif("Select item!",1);return;}
+  var qty=parseFloat(gv("poiqty"))||1,price=parseFloat(gv("poiprice"))||parseFloat(opt.dataset.price)||0;
+  var ex=poItems.find(function(i){return i.sid===opt.value;});
+  if(ex){ex.qty+=qty;ex.price=price;}else poItems.push({sid:opt.value,name:opt.dataset.name,qty:qty,price:price});
+  renderPOItems();
+}
+function remPOItem(i){poItems.splice(i,1);renderPOItems();}
+function renderPOItems(){
+  var t=poItems.reduce(function(s,i){return s+i.qty*i.price;},0);
+  document.getElementById("pototal").textContent=fm(t);
+  document.getElementById("poilist").innerHTML=poItems.length===0?'<div class="tm tsl" style="padding:10px">No items</div>':
+    '<table style="width:100%;font-size:12px"><thead><tr><th>Item</th><th>Qty</th><th>Price</th><th>Amt</th><th></th></tr></thead><tbody>'+
+    poItems.map(function(it,i){return'<tr><td>'+esc(it.name)+'</td>'+
+      '<td><input type="number" value="'+it.qty+'" style="width:55px" onchange="poItems['+i+'].qty=parseFloat(this.value)||1;renderPOItems()"/></td>'+
+      '<td><input type="number" value="'+it.price+'" style="width:75px" onchange="poItems['+i+'].price=parseFloat(this.value)||0;renderPOItems()"/></td>'+
+      '<td class="fb">'+fm(it.qty*it.price)+'</td>'+
+      '<td><button class="btn btn-d btn-sm" onclick="remPOItem('+i+')">&#10005;</button></td></tr>';}).join("")+
+    '</tbody></table>';
+}
+ 
+function savePO(){
+  var sel=document.getElementById("posup"),opt=sel.options[sel.selectedIndex];
+  if(!opt.value){notif("Select supplier!",1);return;}
+  if(poItems.length===0){notif("Add items!",1);return;}
+  var total=poItems.reduce(function(s,i){return s+i.qty*i.price;},0);
+  var o={id:uid(),inv:inv("PO"),sid:opt.value,sname:opt.text,date:gv("podate"),dueDate:gv("podue"),notes:gv("ponotes"),items:poItems.slice(),total:total,status:"pending",recDate:null};
+  DB.po.push(o);save("po");closeModal();pgPO();notif("Purchase Order created!");
+}
+ 
+function viewPO(id){
+  var o=DB.po.find(function(x){return x.id===id;});if(!o)return;
+  openModal("PO: "+o.inv,
+    '<div class="flex gap3 mb3 fwrap">'+
+    '<div><div class="txs tm">Supplier</div><div class="fb">'+esc(o.sname)+'</div></div>'+
+    '<div><div class="txs tm">Date</div><div class="fb">'+fd(o.date)+'</div></div>'+
+    '<div><div class="txs tm">Status</div><span class="badge '+(o.status==="received"?"bg":o.status==="partial"?"by":"br")+'">'+o.status+'</span></div>'+
+    '</div>'+
+    '<div class="table-wrap"><table><thead><tr><th>Item</th><th>Qty</th><th>Price</th><th>Amount</th></tr></thead><tbody>'+
+    o.items.map(function(it){return'<tr><td>'+esc(it.name)+'</td><td>'+it.qty+'</td><td>'+fm(it.price)+'</td><td class="fb">'+fm(it.qty*it.price)+'</td></tr>';}).join("")+
+    '</tbody></table></div>'+
+    '<div class="flex jsb aic mt3 fb tlg"><span>TOTAL</span><span class="ta">'+fm(o.total)+'</span></div>'+
+    (o.notes?'<div class="tm tsl mt2">&#128221; '+esc(o.notes)+'</div>':''),
+    '<button class="btn btn-s" onclick="closeModal()">Close</button>'
+  );
+}
+ 
+function receivePO(id){
+  var o=DB.po.find(function(x){return x.id===id;});
+  if(!o||o.status==="received"){notif("Already received!",1);return;}
+  if(!confirm("Mark received and update stock?"))return;
+  o.items.forEach(function(it){var s=DB.stock.find(function(x){return x.id===it.sid;});if(s)s.qty+=it.qty;});
+  o.status="received";o.recDate=td();save("po");save("stock");
+  if(currentPage==="r-po-out")pgRPOOut(); else pgPO();
+  notif("PO received! Stock updated.");
+}
+ 
+function delPO(id){
+  if(!confirm("Delete PO?"))return;
+  var o=DB.po.find(function(x){return x.id===id;});
+  if(o&&o.status==="received"){o.items.forEach(function(it){var s=DB.stock.find(function(x){return x.id===it.sid;});if(s)s.qty=Math.max(0,s.qty-it.qty);});save("stock");}
+  DB.po=DB.po.filter(function(x){return x.id!==id;});save("po");pgPO();notif("Deleted!",1);
+}
+ 
+// SALES ORDERS
+function pgSO(){
+  var orders=[].concat(DB.so).sort(function(a,b){return b.id>a.id?1:-1;});
+  sc(
+    '<div class="card"><div class="card-hd"><div class="card-title">&#128176; Sales Orders ('+DB.so.length+')</div><button class="btn btn-p" onclick="soForm()">+ New Sale</button></div>'+
+    (orders.length===0?'<div class="empty"><div class="ei">&#128176;</div>No sales yet</div>':
+    '<div class="table-wrap"><table><thead><tr><th>Invoice</th><th>Customer</th><th>Date</th><th>Total</th><th>Paid</th><th>Balance</th><th>Status</th><th>Actions</th></tr></thead><tbody>'+
+    orders.map(function(o){return'<tr>'+
+      '<td class="ta fb">'+esc(o.inv)+'</td><td>'+esc(o.cname)+'</td><td>'+fd(o.date)+'</td>'+
+      '<td class="fb">'+fm(o.total)+'</td><td class="tg">'+fm(o.paid||0)+'</td><td class="tr">'+fm(o.bal||0)+'</td>'+
+      '<td><span class="badge '+(o.status==="paid"?"bg":o.status==="partial"?"by":"br")+'">'+o.status+'</span></td>'+
+      '<td class="flex gap2">'+
+      '<button class="btn btn-i btn-sm" onclick="showRcpt(\''+o.id+'\')">&#128424;</button>'+
+      '<button class="btn btn-ok btn-sm" onclick="markPaid(\''+o.id+'\')">&#10003;</button>'+
+      '<button class="btn btn-d btn-sm" onclick="delSO(\''+o.id+'\')">&#128465;</button></td>'+
+      '</tr>';}).join("")+'</tbody></table></div>')+'</div>'
+  );
+}
+ 
+function soForm(){
+  soItems=[];
+  var co=DB.customers.map(function(c){return'<option value="'+c.id+'" data-name="'+esc(c.name)+'">'+esc(c.name)+'</option>';}).join("");
+  var sto=DB.stock.filter(function(s){return s.qty>0;}).map(function(s){return'<option value="'+s.id+'" data-price="'+s.salePrice+'" data-name="'+esc(s.name)+'" data-stock="'+s.qty+'">'+esc(s.name)+' (Stock:'+s.qty+')</option>';}).join("");
+  var to=DB.taxes.map(function(t){return'<option value="'+t.id+'" data-rate="'+t.rate+'" data-name="'+esc(t.name)+'">'+esc(t.name)+' ('+t.rate+'%)</option>';}).join("");
+  openModal("New Sales Order",
+    '<div class="fg">'+
+    '<div class="fgg"><label class="fl">Customer</label><select id="socust"><option value="">Walk-in</option>'+co+'</select></div>'+
+    '<div class="fgg"><label class="fl">Date *</label><input type="date" id="sodate" value="'+td()+'"/></div>'+
+    '<div class="fgg"><label class="fl">Payment</label><select id="sostat"><option value="pending">Pending/Credit</option><option value="paid">Paid/Cash</option><option value="partial">Partial</option></select></div>'+
+    '<div class="fgg"><label class="fl">Paid Amount (Rs.)</label><input type="number" id="sopaid" placeholder="0"/></div>'+
+    '<div class="fgg"><label class="fl">Tax</label><select id="sotax" onchange="calcSO()"><option value="">No Tax</option>'+to+'</select></div>'+
+    '<div class="fgg"><label class="fl">Discount (Rs.)</label><input type="number" id="sodisc" oninput="calcSO()" placeholder="0"/></div>'+
+    '</div><div class="divider"></div>'+
+    '<div class="card-title mb3">Add Items</div>'+
+    '<div class="flex gap2 mb3 fwrap">'+
+    '<select id="soisel" style="flex:1;min-width:180px"><option value="">-- Select Item --</option>'+sto+'</select>'+
+    '<input type="number" id="soiqty" placeholder="Qty" style="width:70px" value="1"/>'+
+    '<input type="number" id="soiprice" placeholder="Price" style="width:90px"/>'+
+    '<button class="btn btn-ok" onclick="addSOItem()">+ Add</button></div>'+
+    '<div id="soilist"></div>'+
+    '<div class="flex jsb aic mt3 fwrap gap3">'+
+    '<div><div class="txs tm">Subtotal</div><div class="fb" id="so-sub">Rs. 0</div></div>'+
+    '<div><div class="txs tm">Tax</div><div class="fb ta" id="so-tax">Rs. 0</div></div>'+
+    '<div><div class="txs tm">Discount</div><div class="fb tr" id="so-disc">Rs. 0</div></div>'+
+    '<div><div class="txs tm">TOTAL</div><div class="fb txl ta" id="so-tot">Rs. 0</div></div>'+
+    '</div>',
+    '<button class="btn btn-p" onclick="saveSO()">&#128190; Save &amp; Receipt</button><button class="btn btn-s" onclick="closeModal()">Cancel</button>'
+  );
+  renderSOItems();
+}
+ 
+function addSOItem(){
+  var sel=document.getElementById("soisel"),opt=sel.options[sel.selectedIndex];
+  if(!opt.value){notif("Select item!",1);return;}
+  var qty=parseFloat(gv("soiqty"))||1,price=parseFloat(gv("soiprice"))||parseFloat(opt.dataset.price)||0;
+  var maxS=parseFloat(opt.dataset.stock)||0;
+  var ex=soItems.find(function(i){return i.sid===opt.value;});
+  var cur=ex?ex.qty:0;
+  if(cur+qty>maxS){notif("Not enough stock! Available: "+maxS,1);return;}
+  if(ex){ex.qty+=qty;ex.price=price;}else soItems.push({sid:opt.value,name:opt.dataset.name,qty:qty,price:price});
+  renderSOItems();
+}
+function remSOItem(i){soItems.splice(i,1);renderSOItems();}
+function calcSO(){renderSOItems();}
+ 
+function renderSOItems(){
+  var sub=soItems.reduce(function(s,i){return s+i.qty*i.price;},0);
+  var tsel=document.getElementById("sotax"),tr=tsel?parseFloat((tsel.options[tsel.selectedIndex]||{dataset:{}}).dataset.rate||0)||0:0;
+  var disc=gf("sodisc");var ta=sub*tr/100;var tot=sub+ta-disc;
+  var el=function(id){return document.getElementById(id);};
+  if(el("so-sub"))el("so-sub").textContent=fm(sub);
+  if(el("so-tax"))el("so-tax").textContent=fm(ta);
+  if(el("so-disc"))el("so-disc").textContent=fm(disc);
+  if(el("so-tot"))el("so-tot").textContent=fm(tot);
+  document.getElementById("soilist").innerHTML=soItems.length===0?'<div class="tm tsl" style="padding:10px">No items</div>':
+    '<table style="width:100%;font-size:12px"><thead><tr><th>Item</th><th>Qty</th><th>Price</th><th>Amt</th><th></th></tr></thead><tbody>'+
+    soItems.map(function(it,i){return'<tr><td>'+esc(it.name)+'</td>'+
+      '<td><input type="number" value="'+it.qty+'" style="width:55px" onchange="soItems['+i+'].qty=parseFloat(this.value)||1;calcSO()"/></td>'+
+      '<td><input type="number" value="'+it.price+'" style="width:75px" onchange="soItems['+i+'].price=parseFloat(this.value)||0;calcSO()"/></td>'+
+      '<td class="fb">'+fm(it.qty*it.price)+'</td>'+
+      '<td><button class="btn btn-d btn-sm" onclick="remSOItem('+i+')">&#10005;</button></td></tr>';}).join("")+
+    '</tbody></table>';
+}
+ 
+function saveSO(){
+  if(soItems.length===0){notif("Add items!",1);return;}
+  var csel=document.getElementById("socust"),copt=csel.options[csel.selectedIndex];
+  var tsel=document.getElementById("sotax"),topt=tsel.options[tsel.selectedIndex];
+  var tr=parseFloat((topt.dataset||{}).rate||0)||0;
+  var disc=gf("sodisc"),sub=soItems.reduce(function(s,i){return s+i.qty*i.price;},0);
+  var ta=sub*tr/100,tot=sub+ta-disc,paid=gf("sopaid");
+  
+  if(paid>tot){notif("Paid amount cannot exceed total!",1);return;}
+  
+  var stat=paid>=tot?"paid":paid>0?"partial":gv("sostat");
+  var o={id:uid(),inv:inv("SO"),cid:copt.value||"",cname:copt.value?copt.text:"Walk-in",date:gv("sodate"),items:soItems.slice(),sub:sub,taxRate:tr,taxAmt:ta,disc:disc,total:tot,paid:paid,bal:tot-paid,status:stat,taxName:topt.value?topt.text:""};
+  soItems.forEach(function(it){var s=DB.stock.find(function(x){return x.id===it.sid;});if(s)s.qty=Math.max(0,s.qty-it.qty);});
+  DB.so.push(o);save("so");save("stock");closeModal();showRcpt(o.id);pgSO();notif("Sale saved! Stock updated.");
+}
+ 
+function showRcpt(id){
+  var o=DB.so.find(function(x){return x.id===id;});if(!o)return;
+  var ih=o.items.map(function(it){return'<div class="rin">'+esc(it.name)+'</div><div class="rr"><span>'+it.qty+' x Rs. '+it.price.toLocaleString()+'</span><span>Rs. '+(it.qty*it.price).toLocaleString()+'</span></div>';}).join("");
+  document.getElementById("rcpt-content").innerHTML=
+    '<div class="rs">PAKISTAN AUTOS &amp; TIRE AGENCY</div>'+
+    '<div class="rsb">Sales Receipt</div>'+
+    '<div class="rsb">Invoice: '+esc(o.inv)+'</div>'+
+    '<div class="rd"></div>'+
+    '<div class="rr"><span><b>Customer:</b></span><span>'+esc(o.cname)+'</span></div>'+
+    '<div class="rr"><span><b>Date:</b></span><span>'+fd(o.date)+'</span></div>'+
+    '<div class="rd"></div>'+ih+
+    '<div class="rd"></div>'+
+    '<div class="rr"><span>Subtotal</span><span>'+fm(o.sub)+'</span></div>'+
+    (o.taxAmt>0?'<div class="rr"><span>Tax ('+esc(o.taxName)+')</span><span>'+fm(o.taxAmt)+'</span></div>':"") +
+    (o.disc>0?'<div class="rr"><span>Discount</span><span>-'+fm(o.disc)+'</span></div>':"")+
+    '<div class="rd"></div>'+
+    '<div class="rr rtot"><span>TOTAL</span><span>'+fm(o.total)+'</span></div>'+
+    '<div class="rr"><span>Paid</span><span style="color:green">'+fm(o.paid)+'</span></div>'+
+    (o.bal>0?'<div class="rr"><span>Balance</span><span style="color:red">'+fm(o.bal)+'</span></div>':"")+
+    '<div class="rd"></div>'+
+    '<div class="rf">Shukriya! Dobara tashreef laiye &#128591;<br>Pakistan Autos &amp; Tire Agency</div>';
+  document.getElementById("rcpt-modal").style.display="flex";
+}
+ 
+function doPrint(){
+  var c=document.getElementById("rcpt-content").innerHTML;
+  var f=document.createElement("iframe");
+  f.style.cssText="position:fixed;top:-9999px;left:-9999px;width:320px;height:700px;border:none;";
+  document.body.appendChild(f);
+  f.contentDocument.open();
+  f.contentDocument.write('<!DOCTYPE html><html><head><title>Receipt</title><style>*{margin:0;padding:0;box-sizing:border-box;}body{font-family:"Courier New",monospace;width:290px;margin:0 auto;padding:14px;font-size:11px;color:#000;}.rs{text-align:center;font-size:14px;font-weight:900;letter-spacing:1px;margin-bottom:2px;}.rsb{text-align:center;font-size:9px;color:#666;}.rd{border-top:1px dashed #000;margin:7px 0;}.rr{display:flex;justify-content:space-between;margin:2px 0;font-size:11px;}.rin{font-weight:700;font-size:11px;margin-top:5px;}.rtot{font-size:13px;font-weight:900;}.rf{text-align:center;font-size:9px;color:#888;margin-top:10px;}</style></head><body>'+c+'</body></html>');
+  f.contentDocument.close();
+  setTimeout(function(){f.contentWindow.focus();f.contentWindow.print();setTimeout(function(){document.body.removeChild(f);},1500);},400);
+}
+ 
+function markPaid(id){
+  var o=DB.so.find(function(x){return x.id===id;});
+  if(!o||o.status==="paid"){notif("Already paid!",1);return;}
+  o.paid=o.total;o.bal=0;o.status="paid";save("so");
+  if(currentPage==="r-so-out") pgRSOOut(); else pgSO();
+  notif("Marked as paid!");
+}
+
+function delSO(id){
+  if(!confirm("Delete sale? Stock will be restored."))return;
+  var o=DB.so.find(function(x){return x.id===id;});
+  if(o){o.items.forEach(function(it){var s=DB.stock.find(function(x){return x.id===it.sid;});if(s)s.qty+=it.qty;});save("stock");}
+  DB.so=DB.so.filter(function(x){return x.id!==id;});
+  save("so");
+  if(currentPage==="r-so-out") pgRSOOut(); else pgSO();
+  notif("Deleted! Stock restored.",1);
+}
+ 
+// CUSTOMERS
+function pgCustomers(){
+  var list=DB.customers;
+  sc('<div class="card"><div class="card-hd"><div class="card-title">&#128100; Customers ('+list.length+')</div><button class="btn btn-p" onclick="custForm()">+ Add</button></div>'+
+    (list.length===0?'<div class="empty"><div class="ei">&#128100;</div>No customers yet</div>':
+    '<div class="table-wrap"><table><thead><tr><th>#</th><th>Name</th><th>Phone</th><th>City</th><th>Credit Limit</th><th>Actions</th></tr></thead><tbody>'+
+    list.map(function(c,i){return'<tr><td class="tm">'+(i+1)+'</td><td class="fb">'+esc(c.name)+'</td><td>'+(c.phone?esc(c.phone):"-")+'</td><td class="tm">'+(c.city?esc(c.city):"-")+'</td><td>'+fm(c.creditLimit||0)+'</td>'+
+    '<td class="flex gap2"><button class="btn btn-i btn-sm" onclick="custForm(\''+c.id+'\')">&#9999;</button><button class="btn btn-d btn-sm" onclick="delCust(\''+c.id+'\')">&#128465;</button></td></tr>';}).join("")+
+    '</tbody></table></div>')+'</div>');
+}
+function custForm(id){var c=id?DB.customers.find(function(x){return x.id===id;}):{};openModal(id?"Edit Customer":"Add Customer",'<div class="fg"><div class="fgg"><label class="fl">Name *</label><input id="cn" value="'+esc(c.name||"")+'"/></div><div class="fgg"><label class="fl">Phone</label><input id="cp" value="'+esc(c.phone||"")+'"/></div><div class="fgg"><label class="fl">Email</label><input id="ce" value="'+esc(c.email||"")+'"/></div><div class="fgg"><label class="fl">City</label><input id="cc" value="'+esc(c.city||"")+'"/></div><div class="fgg"><label class="fl">Credit Limit (Rs.)</label><input type="number" id="ccr" value="'+(c.creditLimit||0)+'"/></div><div class="fgg"><label class="fl">NIC</label><input id="cni" value="'+esc(c.nic||"")+'"/></div></div><div class="fgg"><label class="fl">Address</label><textarea id="ca" rows="2">'+esc(c.address||"")+'</textarea></div>','<button class="btn btn-p" onclick="saveCust(\''+(id||"")+'\')">&#128190; Save</button><button class="btn btn-s" onclick="closeModal()">Cancel</button>');}
+function saveCust(id){var name=gv("cn").trim();if(!name){notif("Name required!",1);return;}var item={id:id||uid(),name:name,phone:gv("cp"),email:gv("ce"),city:gv("cc"),creditLimit:gf("ccr"),nic:gv("cni"),address:gv("ca")};if(id)DB.customers=DB.customers.map(function(x){return x.id===id?item:x;});else DB.customers.push(item);save("customers");closeModal();pgCustomers();notif("Customer saved!");}
+function delCust(id){if(!confirm("Delete?"))return;DB.customers=DB.customers.filter(function(x){return x.id!==id;});save("customers");pgCustomers();notif("Deleted!",1);}
+ 
+// SUPPLIERS
+function pgSuppliers(){
+  var list=DB.suppliers;
+  sc('<div class="card"><div class="card-hd"><div class="card-title">&#127981; Suppliers ('+list.length+')</div><button class="btn btn-p" onclick="supForm()">+ Add</button></div>'+
+    (list.length===0?'<div class="empty"><div class="ei">&#127981;</div>No suppliers yet</div>':
+    '<div class="table-wrap"><table><thead><tr><th>#</th><th>Name</th><th>Company</th><th>Phone</th><th>City</th><th>Actions</th></tr></thead><tbody>'+
+    list.map(function(s,i){return'<tr><td class="tm">'+(i+1)+'</td><td class="fb">'+esc(s.name)+'</td><td class="tm">'+(s.company?esc(s.company):"-")+'</td><td>'+(s.phone?esc(s.phone):"-")+'</td><td class="tm">'+(s.city?esc(s.city):"-")+'</td>'+
+    '<td class="flex gap2"><button class="btn btn-i btn-sm" onclick="supForm(\''+s.id+'\')">&#9999;</button><button class="btn btn-d btn-sm" onclick="delSup(\''+s.id+'\')">&#128465;</button></td></tr>';}).join("")+
+    '</tbody></table></div>')+'</div>');
+}
+function supForm(id){var s=id?DB.suppliers.find(function(x){return x.id===id;}):{};openModal(id?"Edit Supplier":"Add Supplier",'<div class="fg"><div class="fgg"><label class="fl">Contact Name *</label><input id="supn" value="'+esc(s.name||"")+'"/></div><div class="fgg"><label class="fl">Company</label><input id="supc" value="'+esc(s.company||"")+'"/></div><div class="fgg"><label class="fl">Phone</label><input id="supp" value="'+esc(s.phone||"")+'"/></div><div class="fgg"><label class="fl">Email</label><input id="supe" value="'+esc(s.email||"")+'"/></div><div class="fgg"><label class="fl">City</label><input id="supci" value="'+esc(s.city||"")+'"/></div><div class="fgg"><label class="fl">NTN</label><input id="supntn" value="'+esc(s.ntn||"")+'"/></div></div><div class="fgg"><label class="fl">Address</label><textarea id="supa" rows="2">'+esc(s.address||"")+'</textarea></div>','<button class="btn btn-p" onclick="saveSup(\''+(id||"")+'\')">&#128190; Save</button><button class="btn btn-s" onclick="closeModal()">Cancel</button>');}
+function saveSup(id){var name=gv("supn").trim();if(!name){notif("Name required!",1);return;}var item={id:id||uid(),name:name,company:gv("supc"),phone:gv("supp"),email:gv("supe"),city:gv("supci"),ntn:gv("supntn"),address:gv("supa")};if(id)DB.suppliers=DB.suppliers.map(function(x){return x.id===id?item:x;});else DB.suppliers.push(item);save("suppliers");closeModal();pgSuppliers();notif("Supplier saved!");}
+function delSup(id){if(!confirm("Delete?"))return;DB.suppliers=DB.suppliers.filter(function(x){return x.id!==id;});save("suppliers");pgSuppliers();notif("Deleted!",1);}
+ 
+// CATEGORIES
+function pgCategories(){
+  var list=DB.categories;
+  sc('<div class="card"><div class="card-hd"><div class="card-title">&#127991; Categories ('+list.length+')</div><button class="btn btn-p" onclick="catForm()">+ Add</button></div>'+
+    (list.length===0?'<div class="empty"><div class="ei">&#127991;</div>No categories</div>':
+    '<div class="table-wrap"><table><thead><tr><th>#</th><th>Name</th><th>Description</th><th>Items</th><th>Actions</th></tr></thead><tbody>'+
+    list.map(function(c,i){var cnt=DB.stock.filter(function(s){return s.categoryId===c.id;}).length;return'<tr><td class="tm">'+(i+1)+'</td><td class="fb">'+esc(c.name)+'</td><td class="tm">'+(c.desc?esc(c.desc):"-")+'</td><td><span class="badge bb">'+cnt+'</span></td>'+
+    '<td class="flex gap2"><button class="btn btn-i btn-sm" onclick="catForm(\''+c.id+'\')">&#9999;</button><button class="btn btn-d btn-sm" onclick="delCat(\''+c.id+'\')">&#128465;</button></td></tr>';}).join("")+
+    '</tbody></table></div>')+'</div>');
+}
+function catForm(id){var c=id?DB.categories.find(function(x){return x.id===id;}):{};openModal(id?"Edit Category":"Add Category",'<div class="fgg"><label class="fl">Name *</label><input id="catn" value="'+esc(c.name||"")+'"/></div><div class="fgg mt2"><label class="fl">Description</label><input id="catd" value="'+esc(c.desc||"")+'"/></div>','<button class="btn btn-p" onclick="saveCat(\''+(id||"")+'\')">&#128190; Save</button><button class="btn btn-s" onclick="closeModal()">Cancel</button>');}
+function saveCat(id){var name=gv("catn").trim();if(!name){notif("Name required!",1);return;}var item={id:id||uid(),name:name,desc:gv("catd")};if(id)DB.categories=DB.categories.map(function(x){return x.id===id?item:x;});else DB.categories.push(item);save("categories");closeModal();pgCategories();notif("Category saved!");}
+function delCat(id){if(!confirm("Delete?"))return;DB.categories=DB.categories.filter(function(x){return x.id!==id;});save("categories");pgCategories();notif("Deleted!",1);}
+ 
+// TAXES
+function pgTaxes(){
+  var list=DB.taxes;
+  sc('<div class="card"><div class="card-hd"><div class="card-title">&#128202; Taxes ('+list.length+')</div><button class="btn btn-p" onclick="taxForm()">+ Add</button></div>'+
+    (list.length===0?'<div class="empty"><div class="ei">&#128202;</div>No taxes defined</div>':
+    '<div class="table-wrap"><table><thead><tr><th>#</th><th>Name</th><th>Rate</th><th>Type</th><th>Actions</th></tr></thead><tbody>'+
+    list.map(function(t,i){return'<tr><td class="tm">'+(i+1)+'</td><td class="fb">'+esc(t.name)+'</td><td><span class="badge by">'+t.rate+'%</span></td><td class="tm">'+esc(t.type||"Sales Tax")+'</td>'+
+    '<td class="flex gap2"><button class="btn btn-i btn-sm" onclick="taxForm(\''+t.id+'\')">&#9999;</button><button class="btn btn-d btn-sm" onclick="delTax(\''+t.id+'\')">&#128465;</button></td></tr>';}).join("")+
+    '</tbody></table></div>')+'</div>');
+}
+function taxForm(id){var t=id?DB.taxes.find(function(x){return x.id===id;}):{};openModal(id?"Edit Tax":"Add Tax",'<div class="fg"><div class="fgg"><label class="fl">Tax Name *</label><input id="txn" value="'+esc(t.name||"")+'" placeholder="e.g. GST 17%"/></div><div class="fgg"><label class="fl">Rate (%) *</label><input type="number" id="txr" value="'+(t.rate||"")+'"/></div><div class="fgg"><label class="fl">Type</label><select id="txt"><option '+(t.type==="Sales Tax"?"selected":"")+'>Sales Tax</option><option '+(t.type==="Income Tax"?"selected":"")+'>Income Tax</option><option '+(t.type==="Withholding"?"selected":"")+'>Withholding</option></select></div></div>','<button class="btn btn-p" onclick="saveTax(\''+(id||"")+'\')">&#128190; Save</button><button class="btn btn-s" onclick="closeModal()">Cancel</button>');}
+function saveTax(id){var name=gv("txn").trim(),rate=gf("txr");if(!name||!rate){notif("Name and rate required!",1);return;}var item={id:id||uid(),name:name,rate:rate,type:gv("txt")};if(id)DB.taxes=DB.taxes.map(function(x){return x.id===id?item:x;});else DB.taxes.push(item);save("taxes");closeModal();pgTaxes();notif("Tax saved!");}
+function delTax(id){if(!confirm("Delete?"))return;DB.taxes=DB.taxes.filter(function(x){return x.id!==id;});save("taxes");pgTaxes();notif("Deleted!",1);}
+ 
+// REPORTS
+function pgRDaily(){
+  var d=document.getElementById("rdd")?gv("rdd"):td();
+  var sales=DB.so.filter(function(o){return o.date===d;}),purs=DB.po.filter(function(o){return o.date===d;});
+  var ts=sales.reduce(function(a,o){return a+o.total;},0),tp=purs.reduce(function(a,o){return a+o.total;},0),tpd=sales.reduce(function(a,o){return a+(o.paid||0);},0);
+  sc('<div class="card"><div class="card-hd"><div class="card-title">&#128197; Daily Activity Report</div></div>'+
+    '<div class="flex aic gap3 mb4 fwrap"><label class="fl" style="margin:0;white-space:nowrap">Select Date:</label><input type="date" id="rdd" value="'+d+'" onchange="pgRDaily()" style="width:180px"/></div>'+
+    '<div class="stat-grid">'+
+    '<div class="stat-card"><div class="stat-label">Sales Orders</div><div class="stat-val ta">'+sales.length+'</div><div class="stat-sub">'+fm(ts)+'</div></div>'+
+    '<div class="stat-card"><div class="stat-label">Cash Received</div><div class="stat-val tg">'+fm(tpd)+'</div></div>'+
+    '<div class="stat-card"><div class="stat-label">Purchase Orders</div><div class="stat-val" style="color:var(--blue)">'+purs.length+'</div><div class="stat-sub">'+fm(tp)+'</div></div>'+
+    '<div class="stat-card"><div class="stat-label">Net</div><div class="stat-val '+(ts-tp>=0?"tg":"tr")+'">'+fm(ts-tp)+'</div></div>'+
+    '</div>'+
+    '<div class="card-title mb3">Sales on '+d+'</div>'+
+    (sales.length===0?'<div class="empty" style="padding:20px"><div class="ei">&#128203;</div>No sales on this date</div>':
+    '<div class="table-wrap"><table><thead><tr><th>Invoice</th><th>Customer</th><th>Total</th><th>Paid</th><th>Status</th></tr></thead><tbody>'+
+    sales.map(function(o){return'<tr><td class="ta fb">'+esc(o.inv)+'</td><td>'+esc(o.cname)+'</td><td>'+fm(o.total)+'</td><td class="tg">'+fm(o.paid||0)+'</td><td><span class="badge '+(o.status==="paid"?"bg":o.status==="partial"?"by":"br")+'">'+o.status+'</span></td></tr>';}).join("")+
+    '</tbody></table></div>')+'</div>');
+}
+ 
+function pgRSales(){
+  var orders=[].concat(DB.so).sort(function(a,b){return b.date>a.date?1:-1;});
+  var tot=orders.reduce(function(s,o){return s+o.total;},0),paid=orders.reduce(function(s,o){return s+(o.paid||0);},0);
+  sc('<div class="card"><div class="card-hd"><div class="card-title">&#128200; Sales Report</div></div>'+
+    '<div class="stat-grid">'+
+    '<div class="stat-card"><div class="stat-label">Total Orders</div><div class="stat-val ta">'+orders.length+'</div></div>'+
+    '<div class="stat-card"><div class="stat-label">Total Sales</div><div class="stat-val tg">'+fm(tot)+'</div></div>'+
+    '<div class="stat-card"><div class="stat-label">Received</div><div class="stat-val" style="color:var(--blue)">'+fm(paid)+'</div></div>'+
+    '<div class="stat-card"><div class="stat-label">Outstanding</div><div class="stat-val tr">'+fm(tot-paid)+'</div></div>'+
+    '</div>'+
+    (orders.length===0?'<div class="empty"><div class="ei">&#128200;</div>No sales yet</div>':
+    '<div class="table-wrap"><table><thead><tr><th>Invoice</th><th>Customer</th><th>Date</th><th>Subtotal</th><th>Tax</th><th>Disc</th><th>Total</th><th>Paid</th><th>Balance</th><th>Status</th></tr></thead><tbody>'+
+    orders.map(function(o){return'<tr><td class="ta fb">'+esc(o.inv)+'</td><td>'+esc(o.cname)+'</td><td>'+fd(o.date)+'</td><td>'+fm(o.sub)+'</td><td class="tm">'+fm(o.taxAmt||0)+'</td><td class="tr">'+fm(o.disc||0)+'</td><td class="fb">'+fm(o.total)+'</td><td class="tg">'+fm(o.paid||0)+'</td><td class="tr">'+fm(o.bal||0)+'</td><td><span class="badge '+(o.status==="paid"?"bg":o.status==="partial"?"by":"br")+'">'+o.status+'</span></td></tr>';}).join("")+
+    '</tbody></table></div>')+'</div>');
+}
+ 
+function pgRPurchase(){
+  var orders=[].concat(DB.po).sort(function(a,b){return b.date>a.date?1:-1;});
+  var tot=orders.reduce(function(s,o){return s+o.total;},0),rec=orders.filter(function(o){return o.status==="received";}).length;
+  sc('<div class="card"><div class="card-hd"><div class="card-title">&#128201; Purchase Report</div></div>'+
+    '<div class="stat-grid">'+
+    '<div class="stat-card"><div class="stat-label">Total POs</div><div class="stat-val ta">'+orders.length+'</div></div>'+
+    '<div class="stat-card"><div class="stat-label">Total Value</div><div class="stat-val" style="color:var(--blue)">'+fm(tot)+'</div></div>'+
+    '<div class="stat-card"><div class="stat-label">Received</div><div class="stat-val tg">'+rec+'</div></div>'+
+    '<div class="stat-card"><div class="stat-label">Pending</div><div class="stat-val tr">'+(orders.length-rec)+'</div></div>'+
+    '</div>'+
+    (orders.length===0?'<div class="empty"><div class="ei">&#128201;</div>No purchases yet</div>':
+    '<div class="table-wrap"><table><thead><tr><th>PO No.</th><th>Supplier</th><th>Date</th><th>Due</th><th>Items</th><th>Total</th><th>Status</th><th>Received</th></tr></thead><tbody>'+
+    orders.map(function(o){return'<tr><td class="ta fb">'+esc(o.inv)+'</td><td>'+esc(o.sname)+'</td><td>'+fd(o.date)+'</td><td class="'+(o.dueDate&&o.dueDate<td()?"tr":"")+'">'+fd(o.dueDate)+'</td><td class="tm">'+o.items.length+'</td><td class="fb">'+fm(o.total)+'</td><td><span class="badge '+(o.status==="received"?"bg":o.status==="partial"?"by":"br")+'">'+o.status+'</span></td><td class="tm">'+fd(o.recDate)+'</td></tr>';}).join("")+
+    '</tbody></table></div>')+'</div>');
+}
+ 
+function pgRSOOut(){
+  var orders=DB.so.filter(function(o){return o.status!=="paid"&&(o.bal||0)>0;});
+  var tot=orders.reduce(function(s,o){return s+(o.bal||0);},0);
+  sc('<div class="card"><div class="card-hd"><div class="card-title">&#9203; Sales Outstanding</div></div>'+
+    '<div class="stat-grid">'+
+    '<div class="stat-card"><div class="stat-label">Outstanding Orders</div><div class="stat-val tr">'+orders.length+'</div></div>'+
+    '<div class="stat-card"><div class="stat-label">Total Outstanding</div><div class="stat-val tr">'+fm(tot)+'</div></div>'+
+    '</div>'+
+    (orders.length===0?'<div class="empty"><div class="ei">&#10003;</div>No outstanding sales!</div>':
+    '<div class="table-wrap"><table><thead><tr><th>Invoice</th><th>Customer</th><th>Date</th><th>Total</th><th>Paid</th><th>Balance</th><th>Status</th><th>Action</th></tr></thead><tbody>'+
+    orders.map(function(o){return'<tr><td class="ta fb">'+esc(o.inv)+'</td><td>'+esc(o.cname)+'</td><td>'+fd(o.date)+'</td><td>'+fm(o.total)+'</td><td class="tg">'+fm(o.paid||0)+'</td><td class="tr fb">'+fm(o.bal||0)+'</td><td><span class="badge '+(o.status==="partial"?"by":"br")+'">'+o.status+'</span></td><td><button class="btn btn-ok btn-sm" onclick="markPaid(\''+o.id+'\')">&#10003; Mark Paid</button></td></tr>';}).join("")+
+    '</tbody></table></div>')+'</div>');
+}
+ 
+function pgRPOOut(){
+  var orders=DB.po.filter(function(o){return o.status!=="received";});
+  var tot=orders.reduce(function(s,o){return s+o.total;},0);
+  sc('<div class="card"><div class="card-hd"><div class="card-title">&#9200; Purchase Outstanding</div></div>'+
+    '<div class="stat-grid">'+
+    '<div class="stat-card"><div class="stat-label">Pending POs</div><div class="stat-val tr">'+orders.length+'</div></div>'+
+    '<div class="stat-card"><div class="stat-label">Total Value</div><div class="stat-val tr">'+fm(tot)+'</div></div>'+
+    '</div>'+
+    (orders.length===0?'<div class="empty"><div class="ei">&#10003;</div>No pending POs!</div>':
+    '<div class="table-wrap"><table><thead><tr><th>PO No.</th><th>Supplier</th><th>Date</th><th>Due Date</th><th>Total</th><th>Status</th><th>Action</th></tr></thead><tbody>'+
+    orders.map(function(o){return'<tr><td class="ta fb">'+esc(o.inv)+'</td><td>'+esc(o.sname)+'</td><td>'+fd(o.date)+'</td><td class="'+(o.dueDate&&o.dueDate<td()?"tr fb":"")+'">'+fd(o.dueDate)+'</td><td class="fb">'+fm(o.total)+'</td><td><span class="badge br">'+o.status+'</span></td><td><button class="btn btn-ok btn-sm" onclick="receivePO(\''+o.id+'\')">&#10003; Receive</button></td></tr>';}).join("")+
+    '</tbody></table></div>')+'</div>');
+}
+ 
+function pgRLow(){
+  var thr=parseInt((document.getElementById("lthr")||{}).value||5)||5;
+  var items=DB.stock.filter(function(s){return s.qty<=thr;}).sort(function(a,b){return a.qty-b.qty;});
+  sc('<div class="card"><div class="card-hd"><div class="card-title">&#9888; Low Stock Items</div></div>'+
+    '<div class="flex aic gap3 mb4 fwrap"><label class="fl" style="margin:0;white-space:nowrap">Show stock &le;</label><input type="number" id="lthr" value="'+thr+'" style="width:70px" onchange="pgRLow()"/></div>'+
+    '<div class="stat-grid">'+
+    '<div class="stat-card"><div class="stat-label">Low Stock</div><div class="stat-val tr">'+items.length+'</div></div>'+
+    '<div class="stat-card"><div class="stat-label">Out of Stock</div><div class="stat-val tr">'+items.filter(function(s){return s.qty===0;}).length+'</div></div>'+
+    '</div>'+
+    (items.length===0?'<div class="empty"><div class="ei">&#10003;</div>All items OK</div>':
+    '<div class="table-wrap"><table><thead><tr><th>#</th><th>SKU</th><th>Name</th><th>Category</th><th>Stock</th><th>Min</th><th>Sale Price</th><th>Action</th></tr></thead><tbody>'+
+    items.map(function(s,i){var cat=DB.categories.find(function(c){return c.id===s.categoryId;});return'<tr><td class="tm">'+(i+1)+'</td><td class="ta">'+esc(s.sku||"-")+'</td><td class="fb">'+esc(s.name)+'</td><td>'+(cat?'<span class="badge bb">'+esc(cat.name)+'</span>':"&#8212;")+'</td><td><span class="badge '+(s.qty===0?"bgr":"br")+'">'+s.qty+' '+esc(s.unit||"pcs")+'</span></td><td class="tm">'+(s.minQty||5)+'</td><td>'+fm(s.salePrice)+'</td><td><button class="btn btn-p btn-sm" onclick="nav(\'po\')">Create PO</button></td></tr>';}).join("")+
+    '</tbody></table></div>')+'</div>');
+}
+ 
+function pgRPOD(){
+  var orders=[].concat(DB.po).sort(function(a,b){return b.date>a.date?1:-1;});
+  sc('<div class="card"><div class="card-hd"><div class="card-title">&#128203; PO Details</div></div>'+
+    (orders.length===0?'<div class="empty"><div class="ei">&#128203;</div>No POs yet</div>':
+    orders.map(function(o){return'<div class="card" style="border-left:3px solid '+(o.status==="received"?"var(--green)":o.status==="partial"?"var(--accent)":"var(--red)")+'">'+
+    '<div class="flex jsb aic mb3 fwrap gap3">'+
+    '<div><div class="fb ta">'+esc(o.inv)+'</div><div class="tm tsl">'+esc(o.sname)+' &bull; '+fd(o.date)+(o.dueDate?' &bull; Due: '+fd(o.dueDate):"")+'</div></div>'+
+    '<div class="flex gap2 aic"><span class="badge '+(o.status==="received"?"bg":o.status==="partial"?"by":"br")+'">'+o.status+'</span><div class="fb tlg ta">'+fm(o.total)+'</div></div>'+
+    '</div>'+
+    '<div class="table-wrap"><table><thead><tr><th>Item</th><th>Qty</th><th>Price</th><th>Amount</th></tr></thead><tbody>'+
+    o.items.map(function(it){return'<tr><td>'+esc(it.name)+'</td><td>'+it.qty+'</td><td>'+fm(it.price)+'</td><td class="fb">'+fm(it.qty*it.price)+'</td></tr>';}).join("")+
+    '</tbody></table></div>'+
+    (o.notes?'<div class="tm tsl mt2">&#128221; '+esc(o.notes)+'</div>':"")+"</div>";}).join(""))+'</div>');
+}
+ 
+// INIT
+loadAll();
+document.getElementById("loading").style.display="none";
+document.getElementById("tb-date").textContent=new Date().toLocaleDateString("en-PK",{weekday:"long",year:"numeric",month:"long",day:"numeric"});
+pgDashboard();
+</script>
+</body>
+</html>
